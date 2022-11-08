@@ -4,32 +4,36 @@ export default{
         return {
             logoImage : 'dc-logo.png',
             itemListHeader : [{
-                    headerLink : '/characters',
                     linkName : 'characters',
                     linkState : true
                 },
                 {
-                    headerLink : '/comics',
                     linkName : 'comics',
                     linkState : false
                 },
                 {
-                    headerLink : '/movies',
                     linkName : 'movies',
                     linkState : false
                 },
                 {
-                    headerLink : '/tv',
                     linkName : 'tv',
                     linkState : false
                 }   
-            ]
+            ],
+            currentIndexLink: 0
         }
     },
     methods :{
         getImagePath(imgPath) {
             return new URL(imgPath, import.meta.url).href;
+        },
+        linkSelected (currentIndex){
+            this.itemListHeader[this.currentIndexLink].linkState = false;
+            this.currentIndexLink = currentIndex;
+            this.itemListHeader[this.currentIndexLink].linkState = true;
+            console.log(this.itemListHeader[this.currentIndexLink].linkState,this.currentIndexLink,currentIndex)
         }
+
     },
     components:{
 
@@ -45,7 +49,12 @@ export default{
             </div>
             <div class="header-list">
                 <ul>
-                    <li v-for="(link, linkIndex) in this.itemListHeader" :key="linkIndex"><a href="">{{link.linkName}}</a></li>
+                    <li  
+                    v-for="(link, linkIndex) in this.itemListHeader" 
+                    :key="linkIndex"
+                    :class="(link.linkState) ? 'underlined' : ''">
+                        <a @click="linkSelected (linkIndex)">{{link.linkName}}</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -62,14 +71,14 @@ export default{
         
 
             .header-container{
-                @include page-centering();
+                @include page-centering(60%);
                 height: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
 
                 div:first-child{
-                    height: 90%;
+                    height: 80%;
 
                     img{
                         height: 100%;
@@ -79,10 +88,30 @@ export default{
                 }
 
                 div:last-child{
-
+                    height: 100%;
                     ul{
+                        @include toUppercase();
                         display: flex;
                         gap: 1em;
+                        height: 100%;
+                        
+                        li{
+                            
+                            
+                            display: flex;
+                            align-items: center;
+
+                            &.underlined{
+                                border-bottom: 3px solid black;
+                            }
+
+                            a{
+                                &:active{
+                                    color: lighten(black, 80%);
+                                }
+                                
+                            }
+                        }
                     }
                 }
             }
