@@ -45,7 +45,7 @@ export default{
     <header>
         <div class="header-container">
             <div>
-                <img :src="getImagePath(`../assets/img/${logoImage}`)" alt="">
+                <img :src="getImagePath(`../assets/img/${this.logoImage}`)" alt="">
             </div>
             <div class="header-list">
                 <ul>
