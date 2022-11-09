@@ -12,7 +12,7 @@ export default{
 
   },
   props:{
-    img:String,
+    image:String,
     title: String,
     price: String
   }
@@ -21,7 +21,7 @@ export default{
 
 <template>
   <div class="card">
-    <img :src=img :alt="title">
+    <img :src=image :alt="title">
     <p>{{title}}</p>
     <p>{{price}}</p>
   </div>
