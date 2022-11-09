@@ -35,6 +35,7 @@ export default{
     display: flex;
     flex-direction: column;
     gap: .5em;
+    cursor: pointer;
 
 }
 </style>

@@ -77,11 +77,14 @@ export default{
     series: "Catwoman",
     type: "graphic novel"
   }
-]
+],
+currentSeries : 0
     }
   },
   methods :{
-
+    changeComics(currentindex){
+      this.currentSeries = currentindex
+    }
   },
   components:{
     AppHeroCard
@@ -91,8 +94,11 @@ export default{
 
 <template>
   <main>
+    <div class="dynamic-jumbo">
+      <img :src="comics[currentSeries].thumb" :alt="comics[currentSeries].series">
+    </div>
     <div>
-      <AppHeroCard v-for="(comic,indexComic) in comics" key="indexComic" :image="comic.thumb" :title="comic.series" :price="comic.price"/>
+      <AppHeroCard v-for="(comic,indexComic) in comics" key="indexComic" :image="comic.thumb" :title="comic.series" :price="comic.price" @click="changeComics(indexComic)"/>
     </div>
     <div>
       <button>Load more</button>
@@ -109,6 +115,18 @@ export default{
 main{
     background-color: black;
     color: white;
+
+    .dynamic-jumbo{
+          height: 400px;
+
+            img{
+              object-fit: cover;
+              object-position: top;
+              width: 100%;
+              height: 100%
+            }
+        }
+
 
         div{
             @include page-centering(60%);
