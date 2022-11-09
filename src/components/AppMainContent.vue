@@ -94,6 +94,10 @@ export default{
     <div>
       <AppHeroCard v-for="(comic,indexComic) in comics" key="indexComic" :image="comic.thumb" :title="comic.series" :price="comic.price"/>
     </div>
+    <div>
+      <button>Load more</button>
+
+    </div>
   </main>
 </template>
 
@@ -110,8 +114,22 @@ main{
             @include page-centering(60%);
             padding: 2em 0;
             display: flex;
-            justify-content: flex-start;
             flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        button{
+        @include toUppercase();
+        display: inline-block;
+        margin: 0 auto;
+        color: white;
+        background-color: $merch-bg;
+        padding: .5rem;
+        cursor: pointer;
+
+          &:hover{
+            background-color: lighten($merch-bg, 10%);
+          }
         }
 }
 

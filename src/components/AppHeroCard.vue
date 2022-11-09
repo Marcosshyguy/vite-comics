@@ -31,9 +31,10 @@ export default{
 @use "../styles/paertials/variables.scss" as *;
 @use "../styles/paertials/mixins.scss" as *; 
 .card{
-    width: calc(100% / 6);
+    width: calc(100% / 6 - 1em);
     display: flex;
     flex-direction: column;
-    gap: .5em
+    gap: .5em;
+
 }
 </style>
