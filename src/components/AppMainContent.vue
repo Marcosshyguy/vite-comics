@@ -1,4 +1,6 @@
 <script >
+import AppHeroCard from './AppHeroCard.vue';
+
 export default{
   data(){
     return {
@@ -9,7 +11,7 @@ export default{
 
   },
   components:{
-
+    AppHeroCard
   }
 }
 </script>
@@ -17,13 +19,13 @@ export default{
 <template>
   <main>
     <div>
-        <h1>some content here...</h1>
+      <AppHeroCard/>
     </div>
   </main>
 </template>
 
 <style lang="scss" scoped>
-@use "../styles/general.scss" as *;
+
 @use "../styles/paertials/variables.scss" as *;
 @use "../styles/paertials/mixins.scss" as *; 
 
@@ -33,7 +35,9 @@ main{
 
         div{
             @include page-centering(60%);
-            padding: 2em 1em;
+            padding: 2em 0;
+            display: flex;
+            justify-content: flex-start;
         }
 }
 
