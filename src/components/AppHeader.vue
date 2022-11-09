@@ -31,7 +31,7 @@ export default{
             this.itemListHeader[this.currentIndexLink].linkState = false;
             this.currentIndexLink = currentIndex;
             this.itemListHeader[this.currentIndexLink].linkState = true;
-            console.log(this.itemListHeader[this.currentIndexLink].linkState,this.currentIndexLink,currentIndex)
+            
         }
 
     },
@@ -53,7 +53,7 @@ export default{
                     v-for="(link, linkIndex) in this.itemListHeader" 
                     :key="linkIndex"
                     :class="(link.linkState) ? 'underlined' : ''">
-                        <a @click="linkSelected (linkIndex)">{{link.linkName}}</a>
+                        <a @click="linkSelected (linkIndex)" :class="(link.linkState) ? 'colored' : ''">{{link.linkName}}</a>
                     </li>
                 </ul>
             </div>
@@ -97,17 +97,29 @@ export default{
                         
                         li{
                             
-                            
+                            position: relative;
                             display: flex;
                             align-items: center;
-
-                            &.underlined{
-                                border-bottom: 3px solid black;
+                            
+                            &.underlined::after{
+                                // metodo per creare oggetto sottolineato senza crere spostamneto del contenuto causato dal border
+                                content: "";
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                display: inline-block;
+                                width: 100%;
+                                height: 5px;
+                                background-color: $merch-bg;
                             }
 
                             a{
                                 &:active{
                                     color: lighten(black, 80%);
+                                }
+
+                                &.colored{
+                                    color: $merch-bg;
                                 }
                                 
                             }

@@ -96,6 +96,9 @@ currentSeries : 0
   <main>
     <div class="dynamic-jumbo">
       <img :src="comics[currentSeries].thumb" :alt="comics[currentSeries].series">
+      <div>
+        <h4>Current series</h4>
+      </div>
     </div>
     <div>
       <AppHeroCard v-for="(comic,indexComic) in comics" key="indexComic" :image="comic.thumb" :title="comic.series" :price="comic.price" @click="changeComics(indexComic)"/>
@@ -118,12 +121,22 @@ main{
 
     .dynamic-jumbo{
           height: 400px;
-
+          position: relative;
             img{
               object-fit: cover;
               object-position: top;
               width: 100%;
               height: 100%
+            }
+
+            div{
+              @include toUppercase();
+              padding: .4rem .8rem;
+              background-color: $merch-bg;
+              position: absolute;
+              width: 14%;
+              bottom: 1rem;
+              left: 4em
             }
         }
 
