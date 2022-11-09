@@ -2,6 +2,7 @@
 import AppHeader from './components/AppHeader.vue';
 import AppMainContent from './components/AppMainContent.vue';
 import AppMerchSect from './components/AppMerchSect.vue';
+import AppFooter from './components/AppFooter.vue';
 export default{
   data(){
     return {
@@ -14,7 +15,8 @@ export default{
   components:{
     AppHeader,
     AppMainContent,
-    AppMerchSect
+    AppMerchSect,
+    AppFooter
   }
 }
 </script>
@@ -24,6 +26,7 @@ export default{
   <AppHeader/>
   <AppMainContent/>
   <AppMerchSect/>
+  <AppFooter/>
 </template>
 
 <style lang="scss">
